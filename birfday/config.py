@@ -16,3 +16,4 @@ TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 # Various
 LANGUAGE = os.environ.get("LANGUAGE", "EN")
+LOCALE = os.environ.get("LOCALE", "en_US")

@@ -1,6 +1,7 @@
 import calendar
 import datetime
 import logging
+import locale
 
 import dateutil.parser
 import pytz
@@ -86,6 +87,7 @@ class Birthday(config.Base):
 
     def __str__(self):
         """Format a birthday string as mrkdwn so we can easily send messages."""
+        locale.setlocale(locale.LC_ALL, config.LOCALE)
         fmt = (
             f"<b>{self.first_name.capitalize()} "
             f"{self.last_name.capitalize()}</b> ("
