@@ -92,7 +92,7 @@ class Birthday(config.Base):
         fmt = (
             f"<b>{self.first_name.title()} "
             f"{self.last_name.title()}</b> ("
-            f"{year_difference})"
+            f"{year_difference} \U0001F56F)"
         )
 
         if self.note:
