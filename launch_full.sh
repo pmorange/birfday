@@ -2,7 +2,8 @@
 
 cd /birfday
 
-if [[ -z "${LANGUAGE}" ]]
+if [ -z "${LANGUAGE}" ]
+then
   echo "ERROR : env variable LANGUAGE has to be defined"
 fi
 
