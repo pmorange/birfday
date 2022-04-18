@@ -87,14 +87,15 @@ class Birthday(config.Base):
 
     def __str__(self):
         """Format a birthday string as mrkdwn so we can easily send messages."""
-        locale.setlocale(locale.LC_ALL, config.LOCALE)
+        today = datetime.datetime.today()
+        year_difference = today.year - {self.year}
         fmt = (
-            f"<b>{self.first_name.capitalize()} "
-            f"{self.last_name.capitalize()}</b> ("
-            f"{self.day} {calendar.month_name[self.month]} {self.year})"
+            f"<b>{self.first_name.title()} "
+            f"{self.last_name.title()}</b> ("
+            f"{year_difference})"
         )
 
         if self.note:
-            fmt += f":\n<i>{self.note.capitalize()}</i>"
+            fmt += f":\n<i>{self.note.title()}</i>"
 
         return fmt
