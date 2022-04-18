@@ -13,3 +13,6 @@ Base = declarative_base()
 # Telegram constants
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
+
+# Various
+LANGUAGE = os.environ.get("LANGUAGE", "EN")

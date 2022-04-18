@@ -69,7 +69,13 @@ def main(session):
     #  4. For all birthdays today, notify me and include template message.
     if birthdays:
         bot = telegram_helper.TelegramFacade()
-        message = "We've got some birthdays!\n\n" + "\n\n".join(
+        message_prefix = "We've got some birthdays today !"
+        if config.LANGUAGE == 'ES':
+          message_prefix = "¡ Tenemos cumpleaños hoy !"
+        elif config.LANGUAGE == 'FR':
+          message_prefix = "Nous avons des anniversaires aujourd'hui !"
+          
+        message = message_prefix + "\n\n" + "\n\n".join(
             f"{bday}" for bday in birthdays
         )
         response = bot.send_message(message)

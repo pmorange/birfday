@@ -19,6 +19,7 @@ class Birthday(config.Base):
     id = Column(Integer, primary_key=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
+    year = Column(Integer, nullable=False)
     month = Column(Integer, nullable=False)
     day = Column(Integer, nullable=False)
     note = Column(String)
@@ -37,6 +38,7 @@ class Birthday(config.Base):
             record: Dict containing birthday data. Fields (keys) should match:
                 first_name: str, The person's first name.
                 last_name: str, The person's last name.
+                year: int, The numeric representation of the year.
                 month: int, The numeric representation of the month (1-12).
                 day: int, The numeric representation of the day (1-31).
                 note: str OPTIONAL, A note associated with this person
@@ -55,6 +57,7 @@ class Birthday(config.Base):
         data_dict = {
             "first_name": record["first_name"].lower(),
             "last_name": record["last_name"].lower(),
+            "year": record["year"],
             "month": record["month"],
             "day": record["day"],
             "note": record.get("note")
@@ -86,7 +89,7 @@ class Birthday(config.Base):
         fmt = (
             f"<b>{self.first_name.capitalize()} "
             f"{self.last_name.capitalize()}</b> ("
-            f"{calendar.month_name[self.month]} {self.day})"
+            f"{self.day} {calendar.month_name[self.month]} {self.year})"
         )
 
         if self.note:
