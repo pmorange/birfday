@@ -88,7 +88,7 @@ class Birthday(config.Base):
     def __str__(self):
         """Format a birthday string as mrkdwn so we can easily send messages."""
         today = datetime.datetime.today()
-        year_difference = today.year - {self.year}
+        year_difference = today.year - self.year
         fmt = (
             f"<b>{self.first_name.title()} "
             f"{self.last_name.title()}</b> ("
