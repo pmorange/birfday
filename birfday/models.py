@@ -89,13 +89,13 @@ class Birthday(config.Base):
         """Format a birthday string as mrkdwn so we can easily send messages."""
         fmt = (
             f"<b>{self.first_name.title()} "
-            f"{self.last_name.title()}</b> 
+            f"{self.last_name.title()}</b> "
         )
         
         if self.year:
             today = datetime.datetime.today()
             year_difference = today.year - self.year
-            f"({year_difference} \U0001F56F)"
+            fmt += f"({year_difference} \U0001F56F)"
 
         if self.note:
             fmt += f":\n<i>{self.note.title()}</i>"
