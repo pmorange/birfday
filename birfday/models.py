@@ -20,7 +20,7 @@ class Birthday(config.Base):
     id = Column(Integer, primary_key=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    year = Column(Integer, nullable=False)
+    year = Column(Integer, nullable=True)
     month = Column(Integer, nullable=False)
     day = Column(Integer, nullable=False)
     note = Column(String)
@@ -87,13 +87,15 @@ class Birthday(config.Base):
 
     def __str__(self):
         """Format a birthday string as mrkdwn so we can easily send messages."""
-        today = datetime.datetime.today()
-        year_difference = today.year - self.year
         fmt = (
             f"<b>{self.first_name.title()} "
-            f"{self.last_name.title()}</b> ("
-            f"{year_difference} \U0001F56F)"
+            f"{self.last_name.title()}</b> 
         )
+        
+        if self.year:
+            today = datetime.datetime.today()
+            year_difference = today.year - self.year
+            f"({year_difference} \U0001F56F)"
 
         if self.note:
             fmt += f":\n<i>{self.note.title()}</i>"
