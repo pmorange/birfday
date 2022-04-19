@@ -2,14 +2,16 @@
 
 Get reminders to send friends/family birthday texts (video tutorial [here](https://youtu.be/KRn2xb1bxXM)).
 
+Forked from https://github.com/automagictv/birfday.git
+
 ## Setup
 
 This uses `pipenv` to manage the virtual env and all dependencies. If you don't have pipenv install it [here](https://pypi.org/project/pipenv/) then:
 
 ```
-git clone https://github.com/automagictv/birfday.git
+git clone https://github.com/pmorange/birfday.git
 cd birfday
-pipenv install --ignore-pipfile
+pipenv install --skip-lock
 ```
 
 For this to work, we need Birthday data in our database. If this is the first time you're running this application, start by seeding the data. Instructions on how to do this are below.
@@ -21,6 +23,7 @@ You'll need a csv containing the following fields with a `,` delimiter:
 ```
 first_name
 last_name
+year [OPTIONAL]
 month
 day
 note [OPTIONAL]
@@ -30,9 +33,9 @@ dt_updated [OPTIONAL]
 For example:
 
 ```
-first_name,last_name,month,day
-Test,Birthday,5,15
-Test,Birthday1,10,23
+first_name,last_name,year,month,day
+Test,Birthday,1979,5,15
+Test,Birthday1,,10,23
 ```
 
 Once you have this file you can run the app in SEED mode:
@@ -60,16 +63,3 @@ You can run this on the cron by doing something like this:
 
 This uses the `config.py` file to set certain constants
 
-## Testing
-
-This package uses [pytest](https://docs.pytest.org/en/stable/). So to run the tests, execute the following:
-
-```
-pipenv run python -m pytest
-```
-
-Or to test an individual module, run:
-
-```
-pipenv run python -m pytest tests/[test_module].py
-```
