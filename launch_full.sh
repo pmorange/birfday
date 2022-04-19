@@ -2,9 +2,9 @@
 
 cd /birfday
 
-if [ -z "${LANGUAGE}" ]
+if [ -z "${DATES_FILE}" ]
 then
-  echo "ERROR : env variable LANGUAGE has to be defined"
+  echo "ERROR : env variable DATES_FILE has to be defined"
 fi
 
 pipenv run python3 ./runner.py --mode SEED --file /birfdayFiles/${DATES_FILE}
